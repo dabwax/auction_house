@@ -29,7 +29,10 @@
 
 <h2>How to Install the Database</h2>
 <p>
-  Incoming.
+  Open the Code directory on your Terminal. Run `sequelize db:migrate`.
+
+  If you don't have the sequelize bin in your PATH, just install it:
+  npm install -g sequelize-cli
 </p>
 <h2>How to Contribute</h2>
 <p>
