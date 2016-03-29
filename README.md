@@ -11,9 +11,6 @@
 <h2>Assumptions</h2>
 
 <p>
-  Incoming.
-</p>
-<p>
   I hope you have installed on your machine:
 
   <ul>
