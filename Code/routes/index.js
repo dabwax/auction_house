@@ -4,9 +4,16 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+
+  // check if user already logged
+  if(req.cookies.userLogged) {
+    res.redirect('/dashboard');
+  }
+
   res.render('index', { title: 'Auction House' });
 });
 
+// POST login form
 router.post('/login', function(req, res) {
 
   // Find or Create (if new user, create. if old user, login.)
@@ -41,11 +48,10 @@ router.post('/login', function(req, res) {
       }
   	} // end - create
 
-    // create the session
-    req.session.userLogged = user;
-    
-    console.log(req.session);
+    // create the cookie
+    res.cookie('userLogged', user);
 
+    // redirect do dashboard
     res.redirect('/dashboard');
   });
 });

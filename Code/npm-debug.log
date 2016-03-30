@@ -1,0 +1,230 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'sequelize-cli' ]
+2 info using npm@1.4.29
+3 info using node@v0.10.43
+4 verbose node symlink /usr/bin/node
+5 warn deprecated This version of npm lacks support for important features,
+6 warn deprecated such as scoped packages, offered by the primary npm
+7 warn deprecated registry. Consider upgrading to at least npm@2, if not the
+8 warn deprecated latest stable version. To upgrade to npm@2, run:
+9 warn deprecated npm -g install npm@latest-2
+10 warn deprecated To upgrade to the latest stable version, run:
+11 warn deprecated npm -g install npm@latest
+12 warn deprecated (Depending on how Node.js was installed on your system, you
+13 warn deprecated may need to prefix the preceding commands with `sudo`, or if
+14 warn deprecated on Windows, run them from an Administrator prompt.)
+15 warn deprecated If you're running the version of npm bundled with
+16 warn deprecated Node.js 0.10 LTS, be aware that the next version of 0.10 LTS
+17 warn deprecated will be bundled with a version of npm@2, which has some small
+18 warn deprecated backwards-incompatible changes made to `npm run-script` and
+19 warn deprecated semver behavior.
+20 verbose cache add [ 'sequelize-cli', null ]
+21 verbose cache add name=undefined spec="sequelize-cli" args=["sequelize-cli",null]
+22 verbose parsed url { protocol: null,
+22 verbose parsed url   slashes: null,
+22 verbose parsed url   auth: null,
+22 verbose parsed url   host: null,
+22 verbose parsed url   port: null,
+22 verbose parsed url   hostname: null,
+22 verbose parsed url   hash: null,
+22 verbose parsed url   search: null,
+22 verbose parsed url   query: null,
+22 verbose parsed url   pathname: 'sequelize-cli',
+22 verbose parsed url   path: 'sequelize-cli',
+22 verbose parsed url   href: 'sequelize-cli' }
+23 silly lockFile bb1125fd-sequelize-cli sequelize-cli
+24 verbose lock sequelize-cli /home/lhas/.npm/bb1125fd-sequelize-cli.lock
+25 silly lockFile bb1125fd-sequelize-cli sequelize-cli
+26 silly lockFile bb1125fd-sequelize-cli sequelize-cli
+27 verbose addNamed [ 'sequelize-cli', '' ]
+28 verbose addNamed [ null, '*' ]
+29 silly lockFile f819e9f1-sequelize-cli sequelize-cli@
+30 verbose lock sequelize-cli@ /home/lhas/.npm/f819e9f1-sequelize-cli.lock
+31 silly addNameRange { name: 'sequelize-cli', range: '*', hasData: false }
+32 verbose request where is /sequelize-cli
+33 verbose request registry https://registry.npmjs.org/
+34 verbose request id 6570a6c34abd03ae
+35 verbose url raw /sequelize-cli
+36 verbose url resolving [ 'https://registry.npmjs.org/', './sequelize-cli' ]
+37 verbose url resolved https://registry.npmjs.org/sequelize-cli
+38 verbose request where is https://registry.npmjs.org/sequelize-cli
+39 info trying registry request attempt 1 at 22:09:10
+40 verbose etag "95EN3O4ZRK78TGXXAQY35XUT7"
+41 http GET https://registry.npmjs.org/sequelize-cli
+42 http 304 https://registry.npmjs.org/sequelize-cli
+43 silly registry.get cb [ 304,
+43 silly registry.get   { date: 'Wed, 30 Mar 2016 01:09:10 GMT',
+43 silly registry.get     via: '1.1 varnish',
+43 silly registry.get     'cache-control': 'max-age=300',
+43 silly registry.get     etag: '"95EN3O4ZRK78TGXXAQY35XUT7"',
+43 silly registry.get     age: '0',
+43 silly registry.get     connection: 'keep-alive',
+43 silly registry.get     'x-served-by': 'cache-atl6244-ATL',
+43 silly registry.get     'x-cache': 'HIT',
+43 silly registry.get     'x-cache-hits': '1',
+43 silly registry.get     'x-timer': 'S1459300150.818270,VS0,VE90',
+43 silly registry.get     vary: 'Accept' } ]
+44 verbose etag https://registry.npmjs.org/sequelize-cli from cache
+45 silly addNameRange number 2 { name: 'sequelize-cli', range: '*', hasData: true }
+46 silly addNameRange versions [ 'sequelize-cli',
+46 silly addNameRange   [ '0.0.1',
+46 silly addNameRange     '0.0.2',
+46 silly addNameRange     '0.0.3',
+46 silly addNameRange     '0.0.4',
+46 silly addNameRange     '0.1.0',
+46 silly addNameRange     '0.1.1',
+46 silly addNameRange     '0.2.0',
+46 silly addNameRange     '0.2.1',
+46 silly addNameRange     '0.2.2',
+46 silly addNameRange     '0.2.3',
+46 silly addNameRange     '0.2.4',
+46 silly addNameRange     '0.2.5',
+46 silly addNameRange     '0.2.6',
+46 silly addNameRange     '0.3.0',
+46 silly addNameRange     '0.3.1',
+46 silly addNameRange     '0.3.2',
+46 silly addNameRange     '0.3.3',
+46 silly addNameRange     '1.0.0',
+46 silly addNameRange     '1.0.1',
+46 silly addNameRange     '1.0.2',
+46 silly addNameRange     '1.0.3',
+46 silly addNameRange     '1.0.4',
+46 silly addNameRange     '1.0.5',
+46 silly addNameRange     '1.0.6',
+46 silly addNameRange     '1.0.7',
+46 silly addNameRange     '1.0.8',
+46 silly addNameRange     '1.1.0',
+46 silly addNameRange     '1.2.0',
+46 silly addNameRange     '1.3.0',
+46 silly addNameRange     '1.3.1',
+46 silly addNameRange     '1.3.2',
+46 silly addNameRange     '1.4.0',
+46 silly addNameRange     '1.5.0',
+46 silly addNameRange     '1.6.0',
+46 silly addNameRange     '1.7.0',
+46 silly addNameRange     '1.7.1',
+46 silly addNameRange     '1.7.2',
+46 silly addNameRange     '1.7.3',
+46 silly addNameRange     '1.7.4',
+46 silly addNameRange     '1.8.0',
+46 silly addNameRange     '1.8.1',
+46 silly addNameRange     '1.8.2',
+46 silly addNameRange     '1.8.3',
+46 silly addNameRange     '1.9.0',
+46 silly addNameRange     '1.9.1',
+46 silly addNameRange     '1.9.2',
+46 silly addNameRange     '2.0.0',
+46 silly addNameRange     '2.1.0',
+46 silly addNameRange     '2.1.1',
+46 silly addNameRange     '2.2.0',
+46 silly addNameRange     '2.2.1',
+46 silly addNameRange     '2.3.0',
+46 silly addNameRange     '2.3.1' ] ]
+47 verbose addNamed [ 'sequelize-cli', '2.3.1' ]
+48 verbose addNamed [ '2.3.1', '2.3.1' ]
+49 silly lockFile c19a8d08-sequelize-cli-2-3-1 sequelize-cli@2.3.1
+50 verbose lock sequelize-cli@2.3.1 /home/lhas/.npm/c19a8d08-sequelize-cli-2-3-1.lock
+51 silly lockFile c19a8d08-sequelize-cli-2-3-1 sequelize-cli@2.3.1
+52 silly lockFile c19a8d08-sequelize-cli-2-3-1 sequelize-cli@2.3.1
+53 silly lockFile f819e9f1-sequelize-cli sequelize-cli@
+54 silly lockFile f819e9f1-sequelize-cli sequelize-cli@
+55 silly resolved [ { name: 'sequelize-cli',
+55 silly resolved     version: '2.3.1',
+55 silly resolved     description: 'The sequelize CLI.',
+55 silly resolved     main: 'index.js',
+55 silly resolved     dependencies:
+55 silly resolved      { bluebird: '^3.0.6',
+55 silly resolved        'cli-color': '~0.3.2',
+55 silly resolved        'findup-sync': '^0.3.0',
+55 silly resolved        'fs-extra': '^0.26.3',
+55 silly resolved        gulp: '^3.8.10',
+55 silly resolved        'gulp-help': '~1.3.1',
+55 silly resolved        'js-beautify': '^1.5.4',
+55 silly resolved        lodash: '^4.0.0',
+55 silly resolved        moment: '^2.11.0',
+55 silly resolved        resolve: '^1.0.0',
+55 silly resolved        umzug: '^1.8.0',
+55 silly resolved        yargs: '^3.30.0' },
+55 silly resolved     devDependencies:
+55 silly resolved      { 'coffee-script': '^1.9.0',
+55 silly resolved        'expect.js': '~0.3.1',
+55 silly resolved        'gulp-jscs': '^1.5.1',
+55 silly resolved        'gulp-jshint': '^1.10.0',
+55 silly resolved        'gulp-jshint-instafail': '^1.0.0',
+55 silly resolved        'gulp-markdown-code-blocks': '^1.1.0',
+55 silly resolved        'gulp-mocha': '^2.0.0',
+55 silly resolved        js2coffee: '^2.0.0',
+55 silly resolved        'jshint-stylish': '^1.0.0',
+55 silly resolved        mocha: '^2.1.0',
+55 silly resolved        mysql: '^2.5.4',
+55 silly resolved        nodeify: '^1.0.0',
+55 silly resolved        pg: '^4.2.0',
+55 silly resolved        'pg-hstore': '^2.3.1',
+55 silly resolved        'run-sequence': '^1.0.2',
+55 silly resolved        sequelize: '^3.6.0',
+55 silly resolved        sqlite3: '^3.0.4',
+55 silly resolved        through2: '^0.6.3' },
+55 silly resolved     scripts: { test: 'gulp' },
+55 silly resolved     repository: { type: 'git', url: 'git://github.com/sequelize/cli.git' },
+55 silly resolved     keywords: [ 'sequelize', 'cli' ],
+55 silly resolved     author: { name: 'Sascha Depold' },
+55 silly resolved     license: 'MIT',
+55 silly resolved     bugs: { url: 'https://github.com/sequelize/cli/issues' },
+55 silly resolved     homepage: 'https://github.com/sequelize/cli',
+55 silly resolved     bin: { sequelize: 'bin/sequelize' },
+55 silly resolved     gitHead: '3ad4e582337fb809146e09ee4d355a5b57a98fc8',
+55 silly resolved     _id: 'sequelize-cli@2.3.1',
+55 silly resolved     _shasum: '0f8c0669155d85dddada3425ce8e4dee96357357',
+55 silly resolved     _from: 'sequelize-cli@',
+55 silly resolved     _npmVersion: '3.5.4',
+55 silly resolved     _nodeVersion: '5.3.0',
+55 silly resolved     _npmUser: { name: 'americas', email: 'prplopes@gmail.com' },
+55 silly resolved     dist:
+55 silly resolved      { shasum: '0f8c0669155d85dddada3425ce8e4dee96357357',
+55 silly resolved        tarball: 'http://registry.npmjs.org/sequelize-cli/-/sequelize-cli-2.3.1.tgz' },
+55 silly resolved     maintainers: [ [Object], [Object] ],
+55 silly resolved     directories: {},
+55 silly resolved     _resolved: 'https://registry.npmjs.org/sequelize-cli/-/sequelize-cli-2.3.1.tgz',
+55 silly resolved     readme: 'ERROR: No README data found!' } ]
+56 info install sequelize-cli@2.3.1 into /usr/lib
+57 info installOne sequelize-cli@2.3.1
+58 verbose lib/node_modules/sequelize-cli unbuild
+59 verbose tar unpack /home/lhas/.npm/sequelize-cli/2.3.1/package.tgz
+60 silly lockFile 1b02a67a-r-lib-node-modules-sequelize-cli tar:///usr/lib/node_modules/sequelize-cli
+61 verbose lock tar:///usr/lib/node_modules/sequelize-cli /home/lhas/.npm/1b02a67a-r-lib-node-modules-sequelize-cli.lock
+62 silly lockFile 8de414a3--sequelize-cli-2-3-1-package-tgz tar:///home/lhas/.npm/sequelize-cli/2.3.1/package.tgz
+63 verbose lock tar:///home/lhas/.npm/sequelize-cli/2.3.1/package.tgz /home/lhas/.npm/8de414a3--sequelize-cli-2-3-1-package-tgz.lock
+64 silly gunzTarPerm modes [ '775', '664' ]
+65 error Error: EACCES, mkdir '/usr/lib/node_modules/sequelize-cli'
+65 error  { [Error: EACCES, mkdir '/usr/lib/node_modules/sequelize-cli']
+65 error   errno: 3,
+65 error   code: 'EACCES',
+65 error   path: '/usr/lib/node_modules/sequelize-cli',
+65 error   fstream_type: 'Directory',
+65 error   fstream_path: '/usr/lib/node_modules/sequelize-cli',
+65 error   fstream_class: 'DirWriter',
+65 error   fstream_stack:
+65 error    [ '/usr/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23',
+65 error      '/usr/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53',
+65 error      'Object.oncomplete (fs.js:108:15)' ] }
+66 error Please try running this command again as root/Administrator.
+67 error System Linux 3.19.0-56-generic
+68 error command "/usr/bin/node" "/usr/bin/npm" "install" "-g" "sequelize-cli"
+69 error cwd /home/lhas/Projetos/auction_house/Code
+70 error node -v v0.10.43
+71 error npm -v 1.4.29
+72 error path /usr/lib/node_modules/sequelize-cli
+73 error fstream_path /usr/lib/node_modules/sequelize-cli
+74 error fstream_type Directory
+75 error fstream_class DirWriter
+76 error code EACCES
+77 error errno 3
+78 error stack Error: EACCES, mkdir '/usr/lib/node_modules/sequelize-cli'
+79 error fstream_stack /usr/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23
+79 error fstream_stack /usr/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53
+79 error fstream_stack Object.oncomplete (fs.js:108:15)
+80 verbose exit [ 3, true ]

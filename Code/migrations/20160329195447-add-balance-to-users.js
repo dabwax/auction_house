@@ -7,10 +7,10 @@ module.exports = {
       Return a promise to correctly handle asynchronicity.
 
       Example:
-      return queryInterface.createTable('users', { id: Sequelize.INTEGER });
+      return queryInterface.createTable('Users', { id: Sequelize.INTEGER });
     */
     return queryInterface.addColumn(
-      'users',
+      'Users',
       'balance',
       {
         type: Sequelize.INTEGER,
@@ -25,10 +25,10 @@ module.exports = {
       Return a promise to correctly handle asynchronicity.
 
       Example:
-      return queryInterface.dropTable('users');
+      return queryInterface.dropTable('Users');
     */
     return queryInterface.removeColumn(
-      'users',
+      'Users',
       'balance'
     );
   }
