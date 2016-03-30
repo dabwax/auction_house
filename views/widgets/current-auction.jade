@@ -1,10 +1,10 @@
-current-auction(class="col-xs-12")
+current-auction(class="col-xs-6")
   .panel.panel-warning
     .panel-heading
       h3.panel-title Current Auction
     .panel-body
 
-      .alert.alert-info
+      .alert.alert-info(ng-if="!currentAuction")
         | In the moment, we don't have any auction. Why you don't place one in your inventory, adventurer?
 
       table.table(ng-if="currentAuction")
