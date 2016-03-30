@@ -4,13 +4,20 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-
   // check if user already logged
   if(req.cookies.userLogged) {
-    res.redirect('/dashboard');
+    return res.redirect('/dashboard');
   }
 
   res.render('index', { title: 'Auction House' });
+});
+
+/* GET logout */
+router.get('/logout', function(req, res, next) {
+
+  res.clearCookie('userLogged');
+
+  res.redirect('/');  
 });
 
 // POST login form
