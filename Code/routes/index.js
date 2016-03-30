@@ -8,34 +8,45 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/login', function(req, res) {
-  	console.log(req.body.username);
-  models.User.create({
-    username: req.body.username
-  }).then(function(user) {
 
-  	// default items
-  	var defaultItems = [{
-  		name: "Bread",
-  		quantity: 30
-  	},{
-  		name: "Carrot",
-  		quantity: 18
-  	},{
-  		name: "Diamond",
-  		quantity: 1
-  	}];
+  // Find or Create (if new user, create. if old user, login.)
 
-  	console.log(user);
-  	for (var i = defaultItems.length - 1; i >= 0; i--) {
-  		console.log(defaultItems);
-	  	models.UserItems.create({
-	  		UserId: user.id,
-	  		name: defaultItems[i].name,
-	  		quantity: defaultItems[i].quantity
-	  	});
-  	}
+  // new user begins with 100 points on balance field
+  models.User.findOrCreate({
+    where: {
+      username: req.body.username
+    }
+  }).spread(function(user, created) {
 
-    res.json(user);
+    // if the user was created, insert the default items on your inventary
+    if(created) {
+    	// default items
+    	var defaultItems = [{
+    		name: "Bread",
+    		quantity: 30
+    	},{
+    		name: "Carrot",
+    		quantity: 18
+    	},{
+    		name: "Diamond",
+    		quantity: 1
+    	}];
+
+    	for (var i = defaultItems.length - 1; i >= 0; i--) {
+  	  	models.UserItems.create({
+  	  		UserId: user.id,
+  	  		name: defaultItems[i].name,
+  	  		quantity: defaultItems[i].quantity
+  	  	});
+      }
+  	} // end - create
+
+    // create the session
+    req.session.userLogged = user;
+    
+    console.log(req.session);
+
+    res.redirect('/dashboard');
   });
 });
 
