@@ -1,0 +1,30 @@
+current-auction(class="col-xs-12")
+  .panel.panel-warning
+    .panel-heading
+      h3.panel-title Current Auction
+    .panel-body
+
+      .alert.alert-info
+        | In the moment, we don't have any auction. Why you don't place one in your inventory, adventurer?
+
+      table.table(ng-if="currentAuction")
+        tbody
+          tr
+            td
+              strong Seller
+            td The seller name
+          tr
+            td
+              strong Time Left
+            td 90 secs
+          tr
+            td
+              strong Winning Bid
+            td 108
+          tr
+            td
+            td
+              p
+                input.form-control(type="numeric")
+              
+              button.btn.btn-success.btn-lg Place Bid   

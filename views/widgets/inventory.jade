@@ -1,0 +1,18 @@
+inventory(class="col-xs-12")
+  .panel.panel-info
+    .panel-heading
+      h3.panel-title Inventory
+    .panel-body
+
+      ul.list-group(style="height: 200px; overflow-y: auto;")
+          li.list-group-item(ng-repeat="(key, item) in userLogged.userItems")
+            .row
+              .col-xs-4.text-center
+                img(src="http://placehold.it/40x40")
+
+                strong.clearfix {{item.name}}
+              .col-xs-4.text-center
+                h4 Quantity
+                p {{item.quantity}}
+              .col-xs-4.text-center
+                a.btn.btn-primary.btn-lg(style="margin-top: 12px;" ng-click="startAuction(key)") Auction

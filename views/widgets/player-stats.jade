@@ -1,0 +1,19 @@
+player-stats(class="col-xs-12")
+  .panel.panel-success
+    .panel-heading.clearfix
+      h3.panel-title.pull-left(style="padding-top: 8px;") Player Stats
+      .btn-group.pull-right
+        a(href="/logout" class="btn btn-danger pull-right") Logout
+      .clearfix
+    .panel-body
+
+      .row
+        .col-xs-6.text-center
+          p
+            strong Username 
+            span.label.label-default {{userLogged.user.username}}
+
+        .col-xs-6.text-center
+          p
+            strong Balance 
+            span.label.label-default {{userLogged.user.balance}} Gold Coins

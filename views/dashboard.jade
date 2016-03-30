@@ -2,71 +2,14 @@ extends layout
 
 block content
 
-  .row
-    player-stats(class="col-xs-12")
-      .panel.panel-success
-        .panel-heading.clearfix
-          h3.panel-title.pull-left(style="padding-top: 8px;") Player Stats
-          .btn-group.pull-right
-            a(href="/logout" class="btn btn-danger pull-right") Logout
-          .clearfix
-        .panel-body
+  .row(ng-controller="DashboardCtrl")
 
-          .row
-            .col-xs-6.text-center
-              p
-                strong Username 
-                span.label.label-default #{userLogged.username}
+    include widgets/player-stats.jade
 
-            .col-xs-6.text-center
-              p
-                strong Balance 
-                span.label.label-default #{userLogged.balance} Gold Coins
+    include widgets/inventory.jade
 
-    inventory(class="col-xs-12")
-      .panel.panel-info
-        .panel-heading
-          h3.panel-title Inventory
-        .panel-body
+    include widgets/alerts.jade
 
-          ul.list-group(style="height: 200px; overflow-y: auto;")
-            each item in userLogged.userItems
-              li.list-group-item
-                .row
-                  .col-xs-4.text-center
-                    img(src="http://placehold.it/40x40")
+    include widgets/current-auction.jade
 
-                    strong.clearfix #{item.name}
-                  .col-xs-4.text-center
-                    h4 Quantity
-                    p #{item.quantity}
-                  .col-xs-4.text-center
-                    a.btn.btn-primary.btn-lg(style="margin-top: 12px;") Auction
-
-    current-auction(class="col-xs-12")
-      .panel.panel-warning
-        .panel-heading
-          h3.panel-title Current Auction
-        .panel-body
-
-          table.table
-            tbody
-              tr
-                td
-                  strong Seller
-                td The seller name
-              tr
-                td
-                  strong Time Left
-                td 90 secs
-              tr
-                td
-                  strong Winning Bid
-                td 108
-              tr
-                td
-                td
-                  p
-                    input.form-control(type="numeric")
-                  
-                  button.btn.btn-success.btn-lg Place Bid
+    include modals/auction.jade

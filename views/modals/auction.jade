@@ -1,0 +1,28 @@
+.modal.fade(id="modalAuction" tabindex="-1" role="dialog")
+  .modal-dialog(role="document")
+    .modal-content
+
+      form(name="AuctionForm" ng-submit="submitAuction()" method="POST")
+        .modal-header
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          h4.modal-title Auction for {{currentItem.name}}
+
+        .modal-body
+          
+          .form-group
+            label Quantity <small>(Limit: {{currentItem.quantity}})</small>
+            input.form-control(required type="number" ng-model="newAuction.quantity" name="quantity" max="{{currentItem.quantity}}")
+
+            p.label.label-danger(ng-if="AuctionForm.quantity.$invalid && AuctionForm.quantity.$touched") This quantity is incorrect.
+
+          
+          .form-group
+            label Minimum Bid <small>(Limit: {{userLogged.user.balance}})</small>
+            input.form-control(required type="number" ng-model="newAuction.minimum_bid" name="minimum_bid" max="{{userLogged.user.balance}}")
+
+            p.label.label-danger(ng-if="AuctionForm.minimum_bid.$invalid && AuctionForm.minimum_bid.$touched") This minimum bid is incorrect.
+
+        .modal-footer
+
+          button.btn.btn-success(ng-disabled="AuctionForm.$invalid") Start Auction
+          button.btn.btn-default(data-dismiss="modal") Cancel

@@ -1,0 +1,4 @@
+alerts(ng-if="messages.length > 0")
+	.clearfix
+	div(class="alert alert-{{message.status}}")(ng-repeat="message in messages")
+		{{message.display}}	

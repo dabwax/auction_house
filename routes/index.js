@@ -20,7 +20,11 @@ router.get('/logout', function(req, res, next) {
   res.redirect('/');  
 });
 
-// POST login form
+// Login form
+router.get('/login', function(req, res) {
+  res.redirect('/');
+});
+
 router.post('/login', function(req, res) {
 
   // Find or Create (if new user, create. if old user, login.)
