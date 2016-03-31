@@ -1,4 +1,5 @@
 var express = require('express');
+var http = require('http');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -11,9 +12,10 @@ var api = require('./routes/api');
 
 var app = express();
 var port = process.env.PORT || 5000;
-var http = require( "http" ).createServer( app );
-var io = require( "socket.io" ).listen( http );
-http.listen(port);
+var server = http.createServer(app);
+var io = require( "socket.io" ).listen( server );
+
+server.listen(port);
 
 var totalUsers = 0;
 
