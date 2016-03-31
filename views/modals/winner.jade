@@ -1,0 +1,22 @@
+.modal.fade(id="modalWinner" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false")
+  .modal-dialog(role="document")
+    .modal-content
+
+        .modal-header
+          h4.modal-title Auction Completed!
+
+        .modal-body
+          | We have a winner here!
+          br
+          | Congratulations for:
+          br
+          strong Buyer: {{winner.buyer}}
+          br
+          strong Seller: {{winner.seller}}
+          br
+          strong Item: {{winner.item}}
+          br
+          strong Quantity: {{winner.quantity}}
+          br
+          br
+          p Closing this modal in {{winner.seconds}} seconds...

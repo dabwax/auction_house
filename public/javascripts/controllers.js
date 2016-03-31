@@ -1,4 +1,4 @@
-var DashboardCtrl = function($scope, User, Auction, socket, $timeout, $http) {
+var DashboardCtrl = function($scope, User, Auction, socket, $timeout, $interval, $http) {
 
 	// Alerts system
 	$scope.messages = [];
@@ -18,6 +18,22 @@ var DashboardCtrl = function($scope, User, Auction, socket, $timeout, $http) {
 
 	socket.on('auction:created', function() {
 		$scope.refreshAuction();
+	});
+
+	socket.on('winner', function(data) {
+		//$scope.refreshAuction();
+
+		$scope.winner = data;
+
+		$timeout(function() {
+			$('#modalWinner').modal('hide');
+		}, 10000);
+
+		$interval(function() {
+			$scope.winner.seconds--;
+		}, 1000);
+
+		$('#modalWinner').modal('show');
 	});
 
 	socket.on('user:alert:success', function(data) {

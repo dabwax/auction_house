@@ -13,20 +13,29 @@ router.get('/user_logged', function(req, res, next) {
   	if(req.cookies.userLogged) {
 
   		// set the data
-  		defaultReturn.user = req.cookies.userLogged;
 
-
-  		// set the user items data
-		models.UserItems.findAll({
+  		// set the user data
+		models.User.findOne({
 			where: {
-				UserId: req.cookies.userLogged.id
+				id: req.cookies.userLogged.id
 			}
-		}).then(function(UserItems) {
-  			defaultReturn.userItems = UserItems;
+		}).then(function(user) {
+  			defaultReturn.user = user;
 
-		  	// return as JSON
-			res.json(defaultReturn);
+  			
+	  		// set the user items data
+			models.UserItems.findAll({
+				where: {
+					UserId: req.cookies.userLogged.id
+				}
+			}).then(function(UserItems) {
+	  			defaultReturn.userItems = UserItems;
+
+			  	// return as JSON
+				res.json(defaultReturn);
+	  		});
   		});
+
   	} else {
 	  	// return as JSON
 		res.json(defaultReturn);
@@ -200,8 +209,47 @@ router.post('/auction/winner', function(req, res, next) {
 						});
 
 						io.emit('user:alert:success', {id: auction.current_bid_author, name: result.name, type: "you_won"});
-						io.emit('user:alert:success', {id: auction.UserId, name: result.name, type: "you_sell"});
+						
 					});
+
+					// find buyer
+					models.User.findOne({
+						where: {
+							id: auction.current_bid_author
+						}
+					}).then(function(buyer) {
+
+						// update balance
+						buyer.update({
+							balance: buyer.balance - auction.current_bid
+						});
+
+						// find seller
+						models.User.findOne({
+							where: {
+								id: auction.UserId
+							}
+						}).then(function(seller) {
+							
+							// update balance
+							seller.update({
+								balance: seller.balance + auction.current_bid
+							});
+
+							// emit winner modal
+							io.emit('winner', {
+								buyer: buyer.username,
+								seller: seller.username,
+								item: UserItem.name,
+								quantity: auction.quantity,
+								seconds: 10
+							});
+
+							// updates inventory
+			    			io.emit('user:updated');
+						});
+					});
+
 
 					// updates inventory
 	    			io.emit('user:updated');
