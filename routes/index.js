@@ -36,6 +36,10 @@ router.post('/login', function(req, res) {
     }
   }).spread(function(user, created) {
 
+    var io = req.app.get('io');
+
+    io.emit('user:logged', {id: user.id});
+    
     // if the user was created, insert the default items on your inventary
     if(created) {
     	// default items

@@ -1,5 +1,4 @@
 var express = require('express');
-var http = require('http');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -10,30 +9,13 @@ var routes = require('./routes/index');
 var dashboard = require('./routes/dashboard');
 var api = require('./routes/api');
 
-var WebSocketServer = require("ws").Server
-var app = express()
-var port = process.env.PORT || 5000
+var app = express();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
-var server = http.createServer(app)
-server.listen(port)
+app.set('io', io);
 
-console.log("http server listening on %d", port)
-
-var wss = new WebSocketServer({server: server})
-console.log("websocket server created")
-
-wss.on("connection", function(ws) {
-  var id = setInterval(function() {
-    ws.send(JSON.stringify(new Date()), function() {  })
-  }, 1000)
-
-  console.log("websocket connection open")
-
-  ws.on("close", function() {
-    console.log("websocket connection close")
-    clearInterval(id)
-  })
-})
+http.listen(5000);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

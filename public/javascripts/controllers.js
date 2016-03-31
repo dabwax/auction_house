@@ -1,4 +1,4 @@
-var DashboardCtrl = function($scope, User, Auction) {
+var DashboardCtrl = function($scope, User, Auction, socket, $location) {
 
 	// Alerts system
 	$scope.messages = [];
@@ -6,6 +6,14 @@ var DashboardCtrl = function($scope, User, Auction) {
 	// Get user logged info
 	User.userLogged.then(function(resp) {
 		$scope.userLogged = resp.data;
+	});
+
+	// when user login in another device, force logout to current users
+	socket.on('user:logged', function(data) {
+
+		if(data.id == $scope.userLogged.user.id) {
+			window.location = '/logout';
+		}
 	});
 
 	// Function to handle auction refresh's
