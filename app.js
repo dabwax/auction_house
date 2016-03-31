@@ -10,6 +10,7 @@ var routes = require('./routes/index');
 var dashboard = require('./routes/dashboard');
 var api = require('./routes/api');
 
+var WebSocketServer = require("ws").Server
 var app = express()
 var port = process.env.PORT || 5000
 
