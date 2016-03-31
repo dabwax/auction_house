@@ -15,7 +15,7 @@ var port = process.env.PORT || 5000;
 var server = http.createServer(app);
 var io = require( "socket.io" ).listen( server );
 
-server.listen(port);
+server.listen(8080);
 
 var totalUsers = 0;
 
