@@ -22,7 +22,7 @@ router.get('/user_logged', function(req, res, next) {
 		}).then(function(user) {
   			defaultReturn.user = user;
 
-  			
+
 	  		// set the user items data
 			models.UserItems.findAll({
 				where: {
@@ -242,6 +242,7 @@ router.post('/auction/winner', function(req, res, next) {
 								seller: seller.username,
 								item: UserItem.name,
 								quantity: auction.quantity,
+								value: auction.current_bid,
 								seconds: 10
 							});
 
@@ -276,18 +277,36 @@ router.post('/auction/bid', function(req, res, next) {
 
 	var defaultReturn = {};
 
+    var io = req.app.get('io');
+
 	models.Auction.findOne({
 		where: {
 			id: bid.auction.id
 		}
 	}).then(function(auction) {
+
+		var dataToUpdate = {
+			current_bid: bid.value,
+			current_bid_author: bid.author.user.id
+		};
+
+		if(bid.segundos <= 10) {
+
+			console.log("TEM QUE AUMENTAR O CREATED AT DESSE PUTO!");
+
+			var extendedDate = auction.createdAt;
+			
+			extendedDate.setSeconds(extendedDate.getSeconds()+100);
+
+			auction.update({
+				createdAt: extendedDate,
+			});
+
+		}
 		
 
 		// update auction with the current bid
-		auction.update({
-			current_bid: bid.value,
-			current_bid_author: bid.author.user.id
-		});
+		auction.update(dataToUpdate);
 
 		// return as JSON
 		res.json(defaultReturn);

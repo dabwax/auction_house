@@ -46,6 +46,6 @@ current-auction(class="col-lg-6 col-md-12 col-sm-12 col-xs-12")
               form(name="BidForm" method="POST" ng-submit="placeBid(bid)")
                 p
                   | Mininum bid is {{calculateMin(currentAuction.auction.minimum_bid, currentAuction.auction.current_bid)}}
-                  input.form-control(type="number" ng-model="bid.value" min="{{calculateMin(currentAuction.auction.minimum_bid, currentAuction.auction.current_bid)}}" required)
+                  input.form-control(type="number" ng-model="bid.value" min="{{calculateMin(currentAuction.auction.minimum_bid, currentAuction.auction.current_bid)}}" max="{{userLogged.user.balance}}" required)
                 
                 button.btn.btn-success.btn-lg(ng-disabled="BidForm.$invalid") Place Bid   

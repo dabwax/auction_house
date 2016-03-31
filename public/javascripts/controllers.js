@@ -68,7 +68,12 @@ var DashboardCtrl = function($scope, User, Auction, socket, $timeout, $interval,
 		bid.author = $scope.userLogged;
 		bid.auction = $scope.currentAuction.auction;
 
+		var secondsRemanining = $("#timeleft").countdown('getTimes');
+
+		bid.segundos = secondsRemanining[6];
+
 		$http.post("/api/auction/bid", {bid: bid}).then(function(result) {
+			//$("#timeleft").countdown('destroy');
 			$scope.refreshAuction();
 		});
 	}
