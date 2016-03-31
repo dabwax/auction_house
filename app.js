@@ -10,6 +10,23 @@ var dashboard = require('./routes/dashboard');
 var api = require('./routes/api');
 
 var app = express();
+var port = process.env.PORT || 5000;
+var http = require( "http" ).createServer( app );
+var io = require( "socket.io" ).listen( http );
+http.listen(port);
+
+var totalUsers = 0;
+
+io.on('connection',function(socket){
+  totalUsers++;
+
+  socket.on('disconnect', function () {
+    totalUsers--;
+    console.log(totalUsers + " users online.");
+  });
+
+    console.log(totalUsers + " users online.");
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

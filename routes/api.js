@@ -40,19 +40,18 @@ router.get('/auction/current', function(req, res, next) {
 		auction: false
 	};
 
-	var gLimitDate = new Date();
-	gLimitDate.setMinutes(gLimitDate.getMinutes()-10);
+	var startDate = new Date();
+	startDate.setMinutes(startDate.getMinutes()-1);
 
-	var lLimitDate = new Date();
+	var endDate = new Date();
 
-	console.log(new Date());
 	models.Auction.findOne({
 		include: [models.User],
 		order: [['createdAt', 'DESC']],
 		where: {
 			createdAt: {
-				$gte: gLimitDate,
-				$lte: lLimitDate
+				$gte: startDate,
+				$lte: endDate
 			}
 		}
 	}).then(function(auction) {
@@ -65,7 +64,6 @@ router.get('/auction/current', function(req, res, next) {
 			expectedDate.setMinutes(expectedDate.getMinutes()+1);
 
 			defaultReturn.expectedDate = expectedDate;
-			defaultReturn.currentDate = new Date();
 
 		}
 

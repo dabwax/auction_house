@@ -9,15 +9,11 @@ var DashboardCtrl = function($scope, User, Auction) {
 	});
 
 	// Function to handle auction refresh's
-	function refreshAuction() {
+	$scope.refreshAuction = function() {
 		Auction.currentAuction.then(function(resp) {
-
 
 			if(resp.data.auction) {
 				$scope.currentAuction = resp.data;
-
-
-				
 				$("#timeleft").countdown({until: resp.data.expectedDate});
 
 			} else {
@@ -25,9 +21,8 @@ var DashboardCtrl = function($scope, User, Auction) {
 			}
 		});
 	}
-$("#timeleft").html("teste");
 	// First refresh auction
-	refreshAuction();
+	$scope.refreshAuction();
 
 	// Function when start auction button is pressed
 	$scope.startAuction = function(key) {
@@ -59,9 +54,6 @@ $("#timeleft").html("teste");
 
 			// Hide modal
 			$('#modalAuction').modal('hide');
-
-			// refresh auction
-			refreshAuction();
 		});
 
 	};
