@@ -1,4 +1,4 @@
-var DashboardCtrl = function($scope, User, Auction, socket, $location) {
+var DashboardCtrl = function($scope, User, Auction, socket, $timeout, $http) {
 
 	// Alerts system
 	$scope.messages = [];
@@ -16,32 +16,93 @@ var DashboardCtrl = function($scope, User, Auction, socket, $location) {
 		}
 	});
 
+	socket.on('auction:created', function() {
+		$scope.refreshAuction();
+	});
+
+	socket.on('user:alert:success', function(data) {
+
+		if($scope.userLogged.user.id == data.id) {
+
+			if(data.type == "you_won") {
+				$scope.messages.push({
+					status: "success",
+					display: "You won the auction! " + data.name + " belongs to you now."
+				});
+			}
+
+			if(data.type == "you_sell") {
+				$scope.messages.push({
+					status: "success",
+					display: "Your auction was selled with success! Somebody have your " + data.name + " now."
+				});
+			}
+		}
+	});
+
+	socket.on('user:updated', function() {
+		// Get user logged info
+		$http.get("/api/user_logged").then(function(resp) {
+			$scope.userLogged = resp.data;
+		});
+	});
+
+	// Function to handle place bid
+	$scope.placeBid = function(bid) {
+		bid.author = $scope.userLogged;
+		bid.auction = $scope.currentAuction.auction;
+
+		$http.post("/api/auction/bid", {bid: bid}).then(function(result) {
+			$scope.refreshAuction();
+		});
+	}
+
 	// Function to handle auction refresh's
 	$scope.refreshAuction = function() {
-		Auction.currentAuction.then(function(resp) {
 
+		$http.get("/api/auction/current").then(function(resp) {
 			if(resp.data.auction) {
 				$scope.currentAuction = resp.data;
-				$("#timeleft").countdown({until: resp.data.expectedDate});
-
 			} else {
 				$scope.currentAuction = false;
 			}
 		});
+
 	}
+
+	$scope.calculateMin = function(minimum, current) {
+		var defaultReturn = minimum;
+
+		if(current >= minimum) {
+			defaultReturn = current;
+		}
+
+		return defaultReturn;
+	}
+
 	// First refresh auction
 	$scope.refreshAuction();
 
 	// Function when start auction button is pressed
 	$scope.startAuction = function(key) {
-		// set selected item
-		$scope.currentItem = $scope.userLogged.userItems[key];
 
-		// clear old data
-		$scope.newAuction = null;
+		$http.get("/api/auction/current").then(function(resp) {
+			if(resp.data.auction) {
+				$scope.messages.push({
+					status: "danger",
+					display: "Actually has a auction happening. Wait for this to start a new."
+				});
+			} else {
+				// set selected item
+				$scope.currentItem = $scope.userLogged.userItems[key];
 
-		// show modal
-		$('#modalAuction').modal('show');
+				// clear old data
+				$scope.newAuction = null;
+
+				// show modal
+				$('#modalAuction').modal('show');
+			}
+		});
 
 	};
 

@@ -1,14 +1,16 @@
 inventory(class="col-lg-6 col-md-12 col-sm-12 col-xs-12")
   .panel.panel-info
     .panel-heading
-      h3.panel-title Inventory
+      h3.panel-title
+        img(src="/images/backpack.png" style="width: 40px; height: 40px;")
+        | Inventory
     .panel-body
 
       ul.list-group(style="height: 200px; overflow-y: auto;")
-          li.list-group-item(ng-repeat="(key, item) in userLogged.userItems")
+          li.list-group-item(ng-repeat="(key, item) in userLogged.userItems" ng-if="item.quantity > 0")
             .row
               .col-xs-4.text-center
-                img(src="http://placehold.it/40x40")
+                img(ng-src="/images/items/{{item.name | lowercase}}.png" style="width: 40px; height: 40px;")
 
                 strong.clearfix {{item.name}}
               .col-xs-4.text-center

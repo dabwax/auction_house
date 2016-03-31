@@ -1,7 +1,9 @@
 player-stats(class="col-xs-12")
   .panel.panel-success
     .panel-heading.clearfix
-      h3.panel-title.pull-left(style="padding-top: 8px;") Player Stats
+      h3.panel-title.pull-left(style="padding-top: 8px;")
+        img(src="/images/knight.png" style="width: 40px; height: 40px;")
+        | Player Stats
       .btn-group.pull-right
         a(href="/logout" class="btn btn-danger pull-right") Logout
       .clearfix
@@ -17,3 +19,4 @@ player-stats(class="col-xs-12")
           p
             strong Balance 
             span.label.label-primary {{userLogged.user.balance}} Gold Coins
+            img(src="/images/coins.png" style="width: 40px;")

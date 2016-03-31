@@ -1,16 +1,25 @@
 current-auction(class="col-lg-6 col-md-12 col-sm-12 col-xs-12")
   .panel.panel-warning
     .panel-heading
-      h3.panel-title Current Auction
+      h3.panel-title
+        img(src="/images/auction.png" style="width: 40px;")
+        | Current Auction
     .panel-body
 
-      .alert.alert-info(ng-if="!currentAuction")
+      .alert.alert-info(ng-if="!currentAuction.auction.User.username")
         | In the moment, we don't have any auction.
         br
         | Why you don't start one, adventurer?
 
-      table.table(ng-if="currentAuction")
+      table.table(ng-if="currentAuction.auction.User.username")
         tbody
+          tr
+            td
+              strong Item
+            td
+              img(ng-src="/images/items/{{currentAuction.auction.UserItem.name | lowercase}}.png" style="width: 40px; height: 40px;")
+              |  {{currentAuction.auction.quantity}} {{currentAuction.auction.UserItem.name}}
+          tr
           tr
             td
               strong Seller
@@ -23,12 +32,20 @@ current-auction(class="col-lg-6 col-md-12 col-sm-12 col-xs-12")
           tr
             td
               strong Winning Bid
-            td {{currentAuction.auction.current_bid}}
+            td
+
+              .alert.alert-warning(ng-show="currentAuction.auction.current_bid_author == 0")
+                | Nobody did a bid yet.
+              
+              p(ng-show="currentAuction.auction.current_bid_author > 0")
+                | {{currentAuction.auction.current_bid}} by {{currentAuction.user.username}}
           tr
             td
             td
-              p
-                | Mininum bid is {{currentAuction.auction.minimum_bid}}
-                input.form-control(type="numeric")
-              
-              button.btn.btn-success.btn-lg Place Bid   
+
+              form(name="BidForm" method="POST" ng-submit="placeBid(bid)")
+                p
+                  | Mininum bid is {{calculateMin(currentAuction.auction.minimum_bid, currentAuction.auction.current_bid)}}
+                  input.form-control(type="number" ng-model="bid.value" min="{{calculateMin(currentAuction.auction.minimum_bid, currentAuction.auction.current_bid)}}" required)
+                
+                button.btn.btn-success.btn-lg(ng-disabled="BidForm.$invalid") Place Bid   
