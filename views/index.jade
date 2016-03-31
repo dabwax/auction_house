@@ -3,10 +3,14 @@ extends layout
 block content
   .panel.panel-default
     .panel-heading
-      h3.panel-title Welcome Aboard!
+      h3.panel-title Welcome Aboard, Adventurer!
     .panel-body
       p
-        | Greetings, adventurer! Before you enter on our auction house, we must know your username:
+        | Greetings!
+        br 
+        | Before our guards let you enter on our auction house,
+        br
+        | We must know your Battlefield Name:
 
       form(method="POST" action="/login")
         .form-group

@@ -1,8 +1,131 @@
+@import url(https://fonts.googleapis.com/css?family=Cookie|Just+Another+Hand);
+
 body {
   padding: 20px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 32px "Lucida Grande", Helvetica, Arial, sans-serif;
+  letter-spacing: 2px;
+  background: url("../images/bg.jpg") repeat;
+  font-family: 'Just Another Hand', cursive;
 }
 
 a {
   color: #00B7FF;
+}
+
+.panel {
+	border: none;
+}
+.panel-default .panel-heading {
+	background: #D35400;
+	padding: 15px 25px;
+}
+.panel-default .panel-heading h3 {
+	color: #FFF;
+	font-weight: bold;
+	font-size: 36px;
+	text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+	font-family: Cookie;
+}
+.panel-success .panel-heading {
+	background: #D35400;
+	padding: 15px 25px;
+}
+.panel-success .panel-heading h3 {
+	color: #FFF;
+	font-weight: bold;
+	font-size: 36px;
+	text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+	font-family: Cookie;
+}
+.panel-info .panel-heading {
+	background: #87D37C;
+	padding: 15px 25px;
+}
+.panel-info .panel-heading h3 {
+	color: #FFF;
+	font-weight: bold;
+	font-size: 36px;
+	text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+	font-family: Cookie;
+}
+.panel-warning .panel-heading {
+	background: #8E44AD;
+	padding: 15px 25px;
+}
+.panel-warning .panel-heading h3 {
+	color: #FFF;
+	font-weight: bold;
+	font-size: 36px;
+	text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+	font-family: Cookie;
+}
+.btn-primary, 
+.btn-primary:hover,.btn-danger {
+	border: none;
+	font-family: Cookie;
+	font-weight: bold;
+	font-size: 30px;
+	padding: 5px 20px;
+	background: #F39C12;
+}
+input[type="text"],
+input[type="number"] {
+	font-size: 30px;
+	height: auto;
+	line-height: 30px;
+	letter-spacing: 1px;
+	padding-top: 10px;
+	box-shadow: none !important;
+	background: transparent;
+	border: 2px solid #F2784B;
+	color: #F2784B;
+}
+
+input[type="number"]::-webkit-input-placeholder,
+input[type="text"]::-webkit-input-placeholder {
+	color: #F2784B;
+}
+input[type="number"]:focus,
+input[type="text"]:focus {
+	background: #F2784B;
+	border: 2px solid #FFF;
+	color: #FFF;
+}
+.list-group-item h4,
+.list-group-item strong,
+.list-group-item p {
+	font-size: 30px;
+	font-weight: bold;
+	font-family: "Cookie";
+}
+.list-group-item .btn {
+	background: #1BBC9B;
+}
+.alert {
+	border: none;
+    font-family: "Cookie";
+    font-weight: bold;
+}
+.modal-header {
+	background: #1BBC9B;
+}
+.modal-header h4 {
+	color: #FFF;
+	font-size: 40px;
+	font-weight: bold;
+}
+.label-danger {
+	margin-top: 10px;
+	display: inline-block;
+}
+.modal-footer .btn {
+	font-size: 30px;
+	font-family: 'Cookie';
+	font-weight: bold;
+	border: none;
+}
+.modal-footer .btn-success,
+.modal-footer .btn-success:hover,
+.modal-footer .btn-success:active {
+	background: #CF000F;
 }

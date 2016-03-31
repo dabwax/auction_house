@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        Auction.belongsTo(models.User);
+        Auction.belongsTo(models.User, {foreignKey: 'UserId'});
         Auction.belongsTo(models.UserItems);
       }
     }

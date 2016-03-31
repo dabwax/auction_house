@@ -8,7 +8,12 @@ var User = function($http) {
 var Auction = function($http) {
 
 	return {
-		currentAuction: $http.get("/api/current_auction")
+		currentAuction: $http.get("/api/auction/current"),
+		create: function(newAuction) {
+
+			return $http.post("/api/auction/create", newAuction);
+		}
+		,
 	};
 };
 

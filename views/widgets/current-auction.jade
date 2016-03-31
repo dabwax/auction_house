@@ -1,30 +1,34 @@
-current-auction(class="col-xs-6")
+current-auction(class="col-lg-6 col-md-12 col-sm-12 col-xs-12")
   .panel.panel-warning
     .panel-heading
       h3.panel-title Current Auction
     .panel-body
 
       .alert.alert-info(ng-if="!currentAuction")
-        | In the moment, we don't have any auction. Why you don't place one in your inventory, adventurer?
+        | In the moment, we don't have any auction.
+        br
+        | Why you don't start one, adventurer?
 
       table.table(ng-if="currentAuction")
         tbody
           tr
             td
               strong Seller
-            td The seller name
+            td {{currentAuction.auction.User.username}}
           tr
             td
               strong Time Left
-            td 90 secs
+            td
+              span#timeleft(timeleft)
           tr
             td
               strong Winning Bid
-            td 108
+            td {{currentAuction.auction.current_bid}}
           tr
             td
             td
               p
+                | Mininum bid is {{currentAuction.auction.minimum_bid}}
                 input.form-control(type="numeric")
               
               button.btn.btn-success.btn-lg Place Bid   

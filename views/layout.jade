@@ -13,10 +13,16 @@ html(ng-app="AuctionHouse")
     link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css")
     script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")
     
+    // jQuery Countdown
+    link(rel="stylesheet", href="/stylesheets/jquery.countdown.css")
+    script(src="/javascripts/jquery.plugin.min.js")
+    script(src="/javascripts/jquery.countdown.min.js")
+    
     // Application
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src="/javascripts/app.js")
     script(src="/javascripts/controllers.js")
     script(src="/javascripts/services.js")
+    script(src="/javascripts/directives.js")
   body
     block content
