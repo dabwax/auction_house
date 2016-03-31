@@ -10,25 +10,29 @@ var routes = require('./routes/index');
 var dashboard = require('./routes/dashboard');
 var api = require('./routes/api');
 
-var app = express();
-var port = process.env.PORT || 5000;
-var server = http.createServer(app);
-var io = require( "socket.io" ).listen( server );
+var app = express()
+var port = process.env.PORT || 5000
 
-server.listen(8080);
+var server = http.createServer(app)
+server.listen(port)
 
-var totalUsers = 0;
+console.log("http server listening on %d", port)
 
-io.on('connection',function(socket){
-  totalUsers++;
+var wss = new WebSocketServer({server: server})
+console.log("websocket server created")
 
-  socket.on('disconnect', function () {
-    totalUsers--;
-    console.log(totalUsers + " users online.");
-  });
+wss.on("connection", function(ws) {
+  var id = setInterval(function() {
+    ws.send(JSON.stringify(new Date()), function() {  })
+  }, 1000)
 
-    console.log(totalUsers + " users online.");
-});
+  console.log("websocket connection open")
+
+  ws.on("close", function() {
+    console.log("websocket connection close")
+    clearInterval(id)
+  })
+})
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
